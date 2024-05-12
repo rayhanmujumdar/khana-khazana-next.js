@@ -23,3 +23,18 @@ export const loginService = async (email, password) => {
         throw err;
     }
 };
+
+// favorite recipe add and remove service
+export const favoriteRecipeService = async (recipeId, authId) => {
+    const foundUser = await User.findById(authId);
+    const isFavorite = foundUser.favourites.find(
+        favoriteRecipeId => favoriteRecipeId === recipeId
+    );
+    if (!isFavorite) {
+        foundUser.favourites.push(recipeId);
+    } else {
+        foundUser.favourites.pull(recipeId);
+    }
+    const user = await foundUser.save();
+    return transFromMongoIdByObject(JSON.parse(JSON.stringify(user)));
+};

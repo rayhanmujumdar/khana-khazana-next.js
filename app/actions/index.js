@@ -1,6 +1,10 @@
 'use server';
 
-import { loginService, registerService } from '@/services/userService';
+import {
+    favoriteRecipeService,
+    loginService,
+    registerService,
+} from '@/services/userService';
 import { redirect } from 'next/navigation';
 
 export async function loginAction(formData) {
@@ -21,6 +25,19 @@ export async function registerAction(formData) {
         if (user) {
             redirect('/login');
         }
+    } catch (err) {
+        throw err;
+    }
+}
+
+// favorite recipe add and remove action
+export async function favoriteRecipeAction(recipeId, authId) {
+    try {
+        const updateFavoriteRecipeInUser = await favoriteRecipeService(
+            recipeId,
+            authId
+        );
+        return updateFavoriteRecipeInUser;
     } catch (err) {
         throw err;
     }

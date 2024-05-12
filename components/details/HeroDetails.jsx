@@ -3,6 +3,7 @@ import ActionButtons from './ActionButtons';
 
 export default function HeroDetails({ recipeDetails }) {
     const {
+        id,
         image,
         name,
         category,
@@ -122,7 +123,7 @@ export default function HeroDetails({ recipeDetails }) {
                         </div>
                     </div>
 
-                    <ActionButtons />
+                    <ActionButtons recipeId={id} />
                 </div>
             </div>
         </section>

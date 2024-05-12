@@ -3,6 +3,7 @@ import {
     transFromMongoIdByArray,
     transFromMongoIdByObject,
 } from '@/utils/data-utils';
+import { cache } from 'react';
 
 export const getAllRecipesByCategory = async category => {
     let recipes = [];
@@ -17,10 +18,10 @@ export const getAllRecipesByCategory = async category => {
     return transFromMongoIdByArray(recipes);
 };
 
-export const getRecipesById = async recipeId => {
+export const getRecipesById = cache(async recipeId => {
     const recipes = await Recipe.findById(recipeId).lean();
     return transFromMongoIdByObject(recipes);
-};
+});
 
 export const getAllCategories = async () => {
     const recipes = await getAllRecipesByCategory();

@@ -2,13 +2,14 @@
 
 import { loginAction } from '@/app/actions';
 import { useAuth } from '@/app/hooks/useAuth';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function LoginForm() {
     const [error, setError] = useState(null);
     const router = useRouter();
     const { setAuth } = useAuth();
+    const pathname = usePathname();
     const handleSubmit = async e => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -18,7 +19,13 @@ export default function LoginForm() {
                 throw new Error('Invalid email or password');
             }
             setAuth(user);
-            router.push('/');
+            if (window.location.prev) {
+                router.push(window.location.prev);
+                window.location.prev = null;
+                return;
+            } else {
+                router.push('/');
+            }
         } catch (err) {
             setError(err.message);
         }

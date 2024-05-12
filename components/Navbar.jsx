@@ -29,6 +29,7 @@ export default function Navbar() {
     const handleSignOut = () => {
         setAuth(null);
         router.push('/login');
+        window.location.prev = pathname;
     };
     return (
         <nav>

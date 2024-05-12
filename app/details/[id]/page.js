@@ -9,7 +9,7 @@ export async function generateMetadata({ params, searchParams }) {
         title: recipeDetails.name,
         description: recipeDetails.description.slice(0, 100),
         openGraph: {
-            images: [recipeDetails.image],
+            images: [recipeDetails?.thumbnail],
         },
     };
 }
