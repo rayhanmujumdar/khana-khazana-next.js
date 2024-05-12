@@ -132,5 +132,5 @@ recipeSchema:
 # Deploy:
 
 -   Github - url :
-    (Khana-khazana)[https://github.com/Learn-with-Sumit/assignment-8-khana-khazana-rayhanmujumdar]
+    [Khana-khazana-git-hub](https://github.com/Learn-with-Sumit/assignment-8-khana-khazana-rayhanmujumdar)
 -   Live project url : [Live-site](https://khana-khazana-vert.vercel.app/)
