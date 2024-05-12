@@ -113,5 +113,5 @@ recipeSchema:
 
 # Deploy:
 
-- Github - url :
-- Live project url :
+- Github - url : (Khana-khazana)[https://github.com/Learn-with-Sumit/assignment-8-khana-khazana-rayhanmujumdar]
+- Live project url : 

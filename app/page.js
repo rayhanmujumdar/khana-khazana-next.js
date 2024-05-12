@@ -1,9 +1,19 @@
-import Image from 'next/image';
+import Banner from '@/components/landing/Banner';
+import CategoryList from '@/components/landing/CategoryList';
+import RecipeList from '@/components/landing/RecipeList';
 
 export default function Home() {
     return (
-        <div>
-            <h1>Hello world</h1>
-        </div>
+        <>
+            <section class="container">
+                <Banner />
+            </section>
+            <section class="container py-8">
+                <div class="grid grid-cols-12 py-4">
+                    <CategoryList />
+                    <RecipeList />
+                </div>
+            </section>
+        </>
     );
 }
