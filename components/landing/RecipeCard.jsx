@@ -1,4 +1,4 @@
-import { getBlurData } from '@/utils/blur-generator';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
