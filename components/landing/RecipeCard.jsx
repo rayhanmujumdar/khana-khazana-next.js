@@ -1,21 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function RecipeCard() {
+export default function RecipeCard({ recipe }) {
+    const { id, name, image, rating, author } = recipe;
     return (
-        <Link href="/details/1">
+        <Link href={`/details/${id}`}>
             <div className="card">
                 <Image
-                    src="https://source.unsplash.com/-YHSwy6uqvk/300x160"
+                    src={image}
                     className="rounded-md"
                     alt="recipe-image"
                     width={300}
                     height={300}
                 />
-                <h4 className="my-2">Chef John&aps;s Turkey Sloppy Joes</h4>
+                <h4 className="my-2">{name}</h4>
                 <div className="py-2 flex justify-between text-xs text-gray-500">
-                    <span>⭐️ 5.0</span>
-                    <span>By: John Doe</span>
+                    <span>⭐️ {rating}.0</span>
+                    <span>By: {author}</span>
                 </div>
             </div>
         </Link>

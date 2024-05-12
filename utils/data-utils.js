@@ -1,9 +1,11 @@
 export const transFromMongoIdByArray = data => {
-    const { _id, ...remainingData } = data.map(({ _id, ...dt }) => ({
-        id: _id.toString(),
-        ...dt,
-    }));
-    return remainingData;
+    const updatedData = data
+        .map(dt => ({
+            id: dt._id.toString(),
+            ...dt,
+        }))
+        .map(({ _id, ...rest }) => ({ ...rest }));
+    return updatedData;
 };
 
 export const transFromMongoIdByObject = data => {

@@ -1,22 +1,24 @@
+import mongoose from 'mongoose';
+
 const mongo_uri = process.env.MONGO_URI;
-const cache = {}
+const cache = {};
 
 export const connectMongo = async () => {
     if (!mongo_uri) {
-        throw new Error('No mongo uri found')
+        throw new Error('No mongo uri found');
     }
     if (cache.connection) {
-        return cache.connection
+        return cache.connection;
     }
     if (!cache.promise) {
-        cache.promise = mongoose.connect(mongo_uri)
+        cache.promise = mongoose.connect(mongo_uri);
     }
 
     try {
-        cache.connection = await cache.promise
+        cache.connection = await cache.promise;
+        console.log('mongodb connected');
     } catch (err) {
-        throw err
+        throw err;
     }
-    return cache.connection
-}
-
+    return cache.connection;
+};

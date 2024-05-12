@@ -1,9 +1,9 @@
-import { useState } from 'react';
+'use client';
 import { AuthContext } from '../context';
 import useLocalStore from '../hooks/useLocalStore';
 
 export default function AuthProvider({ children }) {
-    const [auth, setAuth] = useLocalStore(null);
+    const { auth, setAuth } = useLocalStore(null);
     return (
         <AuthContext.Provider value={{ auth, setAuth }}>
             {children}
