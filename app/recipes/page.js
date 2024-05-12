@@ -2,6 +2,10 @@ import CategoryList from '@/components/landing/CategoryList';
 import RecipeList from '@/components/landing/RecipeList';
 import Loading from '@/components/ui/Loading';
 import { Suspense } from 'react';
+export const metadata = {
+    title: 'Recipes - khana-khazana',
+    description: 'This is the Recipes page of khana-khazana',
+};
 
 export default function RecipeCategoryPage({ searchParams: { category } }) {
     return (

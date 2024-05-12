@@ -1,5 +1,4 @@
-import Description from '@/components/details/Description';
-import HeroDetails from '@/components/details/HeroDetails';
+import DetailsPage from '@/components/details/DetailsPage';
 import { getRecipesById } from '@/services/recipeService';
 
 export async function generateMetadata({ params, searchParams }) {
@@ -15,11 +14,5 @@ export async function generateMetadata({ params, searchParams }) {
 }
 
 export default async function RecipeDetailsPage({ params: { id } }) {
-    const recipeDetails = await getRecipesById(id);
-    return (
-        <main>
-            <HeroDetails recipeDetails={recipeDetails} />
-            <Description steps={recipeDetails.steps} />
-        </main>
-    );
+    return <DetailsPage recipeId={id} />;
 }
