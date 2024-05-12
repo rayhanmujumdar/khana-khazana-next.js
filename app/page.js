@@ -13,8 +13,9 @@ export default function Home({ searchParams: { category } }) {
             <section className="container py-8">
                 <div className="grid grid-cols-12 py-4">
                     <Suspense fallback={<Loading />}>
-                        <CategoryList />
+                        <CategoryList categoryName={category} />
                     </Suspense>
+
                     <Suspense fallback={<Loading />}>
                         <RecipeList category={category} />
                     </Suspense>

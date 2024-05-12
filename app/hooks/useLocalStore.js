@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react';
 
 export default function useLocalStore(initialState) {
-    const [auth, setAuth] = useState(initialState);
+    const [auth, setAuth] = useState(
+        JSON.parse(localStorage.getItem('auth')) || initialState
+    );
     useEffect(() => {
-        const auth = JSON.parse(localStorage.getItem('auth'));
-        if (auth) {
-            setAuth(auth);
-        } else {
-            setAuth(initialState);
+        if (!auth) {
+            localStorage.setItem('auth', initialState);
         }
         localStorage.setItem('auth', JSON.stringify(auth));
-    }, [initialState, setAuth]);
-    return {
-        auth,
-        setAuth,
-    };
+    }, [auth, initialState]);
+    return { auth, setAuth };
 }

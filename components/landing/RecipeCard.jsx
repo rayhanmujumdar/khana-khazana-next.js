@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function RecipeCard({ recipe }) {
-    const { id, name, image, rating, author } = recipe;
+    const { id, name, thumbnail, rating, author } = recipe;
     return (
         <Link href={`/details/${id}`}>
             <div className="card">
                 <Image
-                    src={image}
+                    src={thumbnail}
                     className="rounded-md"
                     alt="recipe-image"
                     width={300}

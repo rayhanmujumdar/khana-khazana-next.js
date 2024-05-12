@@ -1,5 +1,6 @@
 import { User } from '@/model/userSchema';
 import { transFromMongoIdByObject } from '@/utils/data-utils';
+import bcrypt from 'bcrypt';
 
 export const registerService = async userInfo => {
     try {

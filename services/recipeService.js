@@ -6,13 +6,13 @@ import {
 
 export const getAllRecipesByCategory = async category => {
     let recipes = [];
-    if (category) {
+    if (category === 'all' || category === undefined) {
+        recipes = await Recipe.find({}).lean();
+    } else {
         const regex = new RegExp(category);
         recipes = await Recipe.find({
             category: { $regex: regex, $options: 'i' },
         }).lean();
-    } else {
-        recipes = await Recipe.find({}).lean();
     }
     return transFromMongoIdByArray(recipes);
 };

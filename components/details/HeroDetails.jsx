@@ -1,13 +1,22 @@
 import Image from 'next/image';
 import ActionButtons from './ActionButtons';
 
-export default function HeroDetails() {
+export default function HeroDetails({ recipeDetails }) {
+    const {
+        image,
+        name,
+        category,
+        description,
+        activeTime,
+        serves,
+        totalTime,
+    } = recipeDetails;
     return (
         <section>
             <div className="grid grid-cols-12 container gap-8 justify-items-center">
                 <div className="col-span-12 md:col-span-6">
                     <Image
-                        src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600"
+                        src={image}
                         alt="recipe-image"
                         className="w-full h-full rounded-lg object-contain"
                         width={600}
@@ -16,16 +25,13 @@ export default function HeroDetails() {
                 </div>
                 <div className="col-span-12 md:col-span-6 py-8 flex flex-col justify-center">
                     <h2 className="font-semibold text-4xl lg:w-8/12 leading-10">
-                        White calzones with marinara sauce
+                        {name}
                     </h2>
                     <p className="text-xs text-[#eb4a36] italic my-2">
-                        Breakfast and Brunch
+                        {category}
                     </p>
                     <p className="text-gray-600 text-sm my-6 leading-6">
-                        Supermarket brands of ricotta contain stabilizers, which
-                        can give the cheese a gummy texture when baked. Check
-                        the label and choose ricotta made with as few
-                        ingredients as possible.
+                        {description}
                     </p>
 
                     <div className="flex gap-4 justify-center divide-x my-12">
@@ -37,9 +43,9 @@ export default function HeroDetails() {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="mx-auto"
                             >
                                 <path
@@ -53,7 +59,9 @@ export default function HeroDetails() {
                             <h3 className="font-medium text-lg text-gray-700 mt-2">
                                 Prep time
                             </h3>
-                            <p className="text-gray-500 text-sm">30 minutes</p>
+                            <p className="text-gray-500 text-sm">
+                                {activeTime} minutes
+                            </p>
                         </div>
                         <div className="flex-1 text-center">
                             <svg
@@ -63,9 +71,9 @@ export default function HeroDetails() {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="mx-auto"
                             >
                                 <path
@@ -80,7 +88,9 @@ export default function HeroDetails() {
                             <h3 className="font-medium text-lg text-gray-700 mt-2">
                                 Cook time
                             </h3>
-                            <p className="text-gray-500 text-sm">1 hour</p>
+                            <p className="text-gray-500 text-sm">
+                                {totalTime} hour
+                            </p>
                         </div>
                         <div className="flex-1 text-center">
                             <svg
@@ -90,9 +100,9 @@ export default function HeroDetails() {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="mx-auto"
                             >
                                 <path
@@ -108,7 +118,7 @@ export default function HeroDetails() {
                             <h3 className="font-medium text-lg text-gray-700 mt-2">
                                 Servings
                             </h3>
-                            <p className="text-gray-500 text-sm">4</p>
+                            <p className="text-gray-500 text-sm">{serves}</p>
                         </div>
                     </div>
 
