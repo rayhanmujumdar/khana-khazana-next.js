@@ -6,7 +6,6 @@ import {
     registerService,
 } from '@/services/userService';
 import { connectMongo } from '@/utils/connect-mongo';
-import { redirect } from 'next/navigation';
 
 export async function loginAction(formData) {
     await connectMongo();
@@ -25,9 +24,7 @@ export async function registerAction(formData) {
     try {
         const userInfo = Object.fromEntries(formData);
         const user = await registerService(userInfo);
-        if (user) {
-            redirect('/login');
-        }
+        return JSON.stringify(user);
     } catch (err) {
         throw err;
     }

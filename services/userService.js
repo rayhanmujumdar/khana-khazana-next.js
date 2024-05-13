@@ -4,6 +4,8 @@ import bcrypt from 'bcrypt';
 
 export const registerService = async userInfo => {
     try {
+        const existingUser = await User.findOne({ email: userInfo.email });
+        if (existingUser) throw new Error('User already exists');
         const user = new User(userInfo);
         return user.save();
     } catch (err) {
