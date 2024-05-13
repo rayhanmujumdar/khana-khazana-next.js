@@ -5,9 +5,11 @@ import {
     loginService,
     registerService,
 } from '@/services/userService';
+import { connectMongo } from '@/utils/connect-mongo';
 import { redirect } from 'next/navigation';
 
 export async function loginAction(formData) {
+    await connectMongo();
     try {
         const email = formData.get('email');
         const password = formData.get('password');
@@ -19,6 +21,7 @@ export async function loginAction(formData) {
 }
 
 export async function registerAction(formData) {
+    await connectMongo();
     try {
         const userInfo = Object.fromEntries(formData);
         const user = await registerService(userInfo);
@@ -32,6 +35,7 @@ export async function registerAction(formData) {
 
 // favorite recipe add and remove action
 export async function favoriteRecipeAction(recipeId, authId) {
+    await connectMongo();
     try {
         const updateFavoriteRecipeInUser = await favoriteRecipeService(
             recipeId,
