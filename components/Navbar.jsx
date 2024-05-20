@@ -1,6 +1,6 @@
 'use client';
 import { useAuth } from '@/app/hooks/useAuth';
-import lws_logo from '@/public/assets/images/logo.png';
+import project_logo from '@/public/assets/logo-svg.png';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -35,11 +35,14 @@ export default function Navbar() {
         <nav>
             <div className="container flex justify-between py-6">
                 <Link href="/">
-                    <Image
-                        src={lws_logo}
-                        alt="project-logo"
-                        className="object-cover h-[40px]"
-                    />
+                    <div className="flex items-center">
+                        <Image
+                            src={project_logo}
+                            alt="project-logo"
+                            className="object-cover h-[40px]"
+                        />
+                        <span className="text-xl font-bold">Khana Khazana</span>
+                    </div>
                 </Link>
 
                 <ul className="flex gap-4 text-sm text-gray-500">
