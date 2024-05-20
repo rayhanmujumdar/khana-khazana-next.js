@@ -10,10 +10,19 @@ export default function Modal({ children }) {
     useEffect(() => {
         setShowModal(pathname.includes('/details/'));
     }, [pathname]);
+    const handleRedirect = () => {
+        console.log(window.location.prev);
+        if (window.location.prev?.includes('/login')) {
+            router.push('/', { scroll: false });
+            window.location.prev = null;
+        } else {
+            router.back();
+        }
+    };
     return (
         showModal && (
             <>
-                <div onClick={() => router.back()} className="overlay"></div>
+                <div onClick={handleRedirect} className="overlay"></div>
                 <div className="modal">{children}</div>
             </>
         )

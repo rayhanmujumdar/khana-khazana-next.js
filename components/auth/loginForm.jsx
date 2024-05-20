@@ -2,14 +2,13 @@
 
 import { loginAction } from '@/app/actions';
 import { useAuth } from '@/app/hooks/useAuth';
-import wait from '@/test/wait';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
 export default function LoginForm() {
     const [error, setError] = useState(null);
     const router = useRouter();
-    const { setAuth } = useAuth();
+    const { auth, setAuth } = useAuth();
     const pathname = usePathname();
     const [pending, startTransition] = useTransition();
     const handleSubmit = async e => {
@@ -22,13 +21,7 @@ export default function LoginForm() {
                 throw new Error('Invalid email or password');
             }
             setAuth(user);
-            if (window.location.prev) {
-                router.push(window.location.prev);
-                window.location.prev = null;
-                return;
-            } else {
-                router.push('/');
-            }
+            router.push('/');
         } catch (err) {
             setError(err.message);
         }

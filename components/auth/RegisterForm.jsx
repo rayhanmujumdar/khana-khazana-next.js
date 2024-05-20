@@ -1,12 +1,19 @@
 'use client';
 import { registerAction } from '@/app/actions';
+import { useAuth } from '@/app/hooks/useAuth';
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 
 export default function RegisterForm() {
+    const { auth } = useAuth();
     const [error, setError] = useState(null);
     const [pending, startTransition] = useTransition();
     const router = useRouter();
+    useEffect(() => {
+        if (auth) {
+            router.push('/');
+        }
+    }, [auth]);
     const registerActionForm = async e => {
         e.preventDefault();
         try {

@@ -1,6 +1,7 @@
 'use client';
 import { favoriteRecipeAction } from '@/app/actions';
 import { useAuth } from '@/app/hooks/useAuth';
+import { revalidatePath } from 'next/cache';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 export default function FavoriteButton({ recipeId }) {
