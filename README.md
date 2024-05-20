@@ -1,6 +1,6 @@
 Date: 5/11/24
 
-# Assignment - 8 - Khanna Khazana
+# Project: Khanna Khazana
 
 **Date: 5/11/24** **Agenda:**
 

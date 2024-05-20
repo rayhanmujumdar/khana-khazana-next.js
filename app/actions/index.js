@@ -13,7 +13,7 @@ export async function loginAction(formData) {
         const email = formData.get('email');
         const password = formData.get('password');
         const user = await loginService(email, password);
-        return user;
+        return JSON.parse(JSON.stringify(user));
     } catch (err) {
         throw err;
     }
@@ -24,7 +24,7 @@ export async function registerAction(formData) {
     try {
         const userInfo = Object.fromEntries(formData);
         const user = await registerService(userInfo);
-        return JSON.stringify(user);
+        return JSON.parse(JSON.stringify(user));
     } catch (err) {
         throw err;
     }
